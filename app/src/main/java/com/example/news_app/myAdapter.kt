@@ -1,6 +1,7 @@
 package com.example.news_app
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.news_app.activity.webview
 import com.example.news_app.db.Articles
 import com.example.news_app.db.News
 
@@ -30,6 +32,11 @@ class myAdapter(val context: Context,val itemlist:List<Articles>):RecyclerView.A
         Glide.with(context)
             .load(data.urlToImage)
             .into(holder.imag)
+        holder.itemView.setOnClickListener {
+            val intent= Intent(context,webview::class.java)
+            intent.putExtra("web",data.url)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

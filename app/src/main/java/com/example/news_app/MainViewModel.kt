@@ -1,26 +1,25 @@
 package com.example.news_app
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.news_app.db.News
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(application: Application):AndroidViewModel(application) {
+class MainViewModel @Inject constructor(val repository: Repository):ViewModel() {
 
-    lateinit var repository:Repository
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.getnews(1)
         }
     }
 
     val livelong:LiveData<News>
         get() {
-           return repository.liveData
+           return repository.liveinstance
         }
 }

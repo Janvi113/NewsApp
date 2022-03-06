@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_margin="20dp"
-    android:layout_height="200dp">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_marginStart="10dp"
@@ -13,9 +13,10 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/image_content"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/image_content"/>
+            android:layout_height="100dp" />
 
         <TextView
             android:layout_width="wrap_content"

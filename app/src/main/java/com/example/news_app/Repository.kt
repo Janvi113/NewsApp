@@ -15,7 +15,7 @@ class Repository @Inject constructor(private val newsService: NewsService) {
            return liveData
         }
 
-    fun getnews(page:Int){
+    suspend fun getnews(page:Int){
         val data=newsService.getnewsapi(page)
         if (data!=null){
            liveData.postValue(data.body())

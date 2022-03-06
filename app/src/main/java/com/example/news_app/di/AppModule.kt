@@ -15,7 +15,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    private fun baseurl():String="https://newsapi.org/"
+     fun baseurl():String="https://newsapi.org/"
 
     @Singleton
     @Provides
